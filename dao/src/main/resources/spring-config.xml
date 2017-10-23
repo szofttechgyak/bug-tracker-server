@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://157.181.161.108:3306/bugtracker"/>
+        <property name="username" value="bugtracker"/>
+        <property name="password" value="cde+vfr4"/>
+    </bean>
+
+    <bean id="mySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource"/>
+        <property name="annotatedClasses">
+        	<list>
+	            <value>hu.elte.inf.software.technology.bugtracker.domain.User</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.Project</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.Ticket</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.ProjectUser</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.Status</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.Comment</value>
+			</list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+            	<prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
