@@ -36,7 +36,7 @@ public class ProjectController {
     public ResponseEntity<List<Project>> getAllProjects() {
     	List<Project> project = projectService.getAllProjects();
     	if(project.isEmpty()){
-            return new ResponseEntity<List<Project>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<List<Project>>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<List<Project>>(project, HttpStatus.OK);
     }
