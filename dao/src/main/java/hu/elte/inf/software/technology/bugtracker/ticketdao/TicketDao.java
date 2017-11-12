@@ -9,6 +9,7 @@ public interface TicketDao {
 	public void updateTicket(Ticket ticket);
 	public List<Ticket> listTickets();
 	public List<Ticket> listTicketsByUserId(int id);
+	public List<Ticket> listTicketsByProjectId(int projectId);
 	public Ticket getTicketById(int id);
 	public void removeTicket(int id);
 }

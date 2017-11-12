@@ -72,5 +72,15 @@ public class TicketDaoImpl extends HibernateDaoSupport implements TicketDao{
 		List<Ticket> ticketsList = query.list();
 		return ticketsList;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Ticket> listTicketsByProjectId(int projectId) {
+		Session session = getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("from Ticket where projectId = :id");
+		query.setParameter("id", projectId);
+		List<Ticket> ticketsList = query.list();
+		return ticketsList;
+	}
 
 }
