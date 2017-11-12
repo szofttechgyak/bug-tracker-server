@@ -111,4 +111,13 @@ public class TicketController {
         }
         return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/api/ticketsByProject/{projectId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Ticket>> getTicketsByProjectId(@PathVariable int projectId) {
+    	List<Ticket> tickets = ticketService.listTicketsByProjectId(projectId);
+        if(tickets.isEmpty()){
+            return new ResponseEntity<List<Ticket>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
+    }
 }

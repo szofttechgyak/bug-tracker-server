@@ -38,6 +38,10 @@ public class TicketService {
     	return ticketDao.listTicketsByUserId(userId);
     }
     
+    public List<Ticket> listTicketsByProjectId(int projectId) {
+    	return ticketDao.listTicketsByProjectId(projectId);
+    }
+    
     public TicketDao getTicketDao() {
 		return ticketDao;
 	}
