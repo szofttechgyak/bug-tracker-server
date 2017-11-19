@@ -38,9 +38,20 @@ public class Ticket implements Serializable{
     private String ticketDescription;
     private Set<Status> status;
     private Set<Comment> comment;
+	private Set<TicketHistory> historyRows;
     
 	public Ticket(){
     }
+	
+	public void setTicketHistory(Set<TicketHistory> historyRows) {
+		this.historyRows = historyRows;
+	}
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "ticket")
+	public Set<TicketHistory> getTicketHistory() {
+		return historyRows;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

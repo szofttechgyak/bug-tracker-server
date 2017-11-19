@@ -17,6 +17,10 @@
 	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.Ticket"/>
 	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.ProjectUser"/>
     <mapping class="hu.elte.inf.software.technology.bugtracker.domain.Status"/>
-	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.Comment"/>	
+	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.Comment"/>
+	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.StatusHistory"/>		
+	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.UserHistory"/>	
+	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.ProjectHistory"/>		
+	<mapping class="hu.elte.inf.software.technology.bugtracker.domain.TicketHistory"/>
 	</session-factory>
 </hibernate-configuration>

@@ -35,8 +35,20 @@ public class User implements Serializable{
 	private Set<Status> status;	
 	private Set<Comment> writtenComments;
 	private boolean admin;
+	private Set<UserHistory> historyRows;
+    
 	
 	public User(){
+	}
+	
+	public void setUserHistory(Set<UserHistory> historyRows) {
+		this.historyRows = historyRows;
+	}
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	public Set<UserHistory> getUserHistory() {
+		return historyRows;
 	}
 
 	@Id

@@ -2,6 +2,7 @@ package hu.elte.inf.software.technology.bugtracker.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Status")
@@ -27,8 +31,20 @@ public class Status implements Serializable {
 	private Date startTime;
 	private Date endTime;
 	private String statusName;
+	private Set<StatusHistory> historyRows;
+
 	
 	public Status(){
+	}
+	
+	public void setStatusHistory(Set<StatusHistory> historyRows) {
+		this.historyRows = historyRows;
+	}
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "status")
+	public Set<StatusHistory> getStatusHistory() {
+		return historyRows;
 	}
 	
 	@Id

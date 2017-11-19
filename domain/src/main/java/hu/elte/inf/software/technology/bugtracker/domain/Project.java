@@ -33,8 +33,19 @@ public class Project implements Serializable{
 	private int s3Time;
 	private Set<Ticket> tickets;
 	private Set<ProjectUser> projectUser;
+	private Set<ProjectHistory> historyRows;
 	
 	public Project(){
+	}
+	
+	public void setProjectHistory(Set<ProjectHistory> historyRows) {
+		this.historyRows = historyRows;
+	}
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "project")
+	public Set<ProjectHistory> getProjectHistory() {
+		return historyRows;
 	}
 	
 	@Id

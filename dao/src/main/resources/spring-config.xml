@@ -19,6 +19,10 @@
 				<value>hu.elte.inf.software.technology.bugtracker.domain.ProjectUser</value>
 				<value>hu.elte.inf.software.technology.bugtracker.domain.Status</value>
 				<value>hu.elte.inf.software.technology.bugtracker.domain.Comment</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.StatusHistory</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.UserHistory</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.ProjectHistory</value>
+				<value>hu.elte.inf.software.technology.bugtracker.domain.TicketHistory</value>
 			</list>
         </property>
         <property name="hibernateProperties">
