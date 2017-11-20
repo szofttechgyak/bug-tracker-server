@@ -8,6 +8,6 @@ public interface ProjectHistoryDao {
 
 	public List<ProjectHistory> listProjectHistory();
 	public ProjectHistory getProjectHistoryById(int id);
-	
+	public List<ProjectHistory> getProjectHistoryByProjectId(int projectId);
 }
 

@@ -39,5 +39,15 @@ public class ProjectHistoryController {
         }
         return new ResponseEntity<ProjectHistory>(projectHistory, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/api/projectHistoryByProjectId/{projectId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ProjectHistory>> getProjectHistoryByProjectId(@PathVariable int projectId) {
+    	List<ProjectHistory> projectHistory = projectHistoryService.getProjectHistorytByProjectId(projectId);
+        if (projectHistory == null) {
+            System.out.println("Project with id " + projectId + " not found");
+            return new ResponseEntity<List<ProjectHistory>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<ProjectHistory>>(projectHistory, HttpStatus.OK);
+    }
 	
 }
