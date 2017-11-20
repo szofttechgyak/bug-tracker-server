@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import hu.elte.inf.software.technology.bugtracker.domain.ProjectHistory;
 import hu.elte.inf.software.technology.bugtracker.domain.TicketHistory;
 import hu.elte.inf.software.technology.bugtracker.service.TicketHistoryService;
 
@@ -38,5 +39,15 @@ public class TicketHistoryController {
             return new ResponseEntity<TicketHistory>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<TicketHistory>(ticketHistory, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/api/ticketHistoryByticketId/{ticketId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TicketHistory>> getTicketHistoryByticketId(@PathVariable int ticketId) {
+    	List<TicketHistory> ticketHistory = ticketHistoryService.getTicketHistoryByTicketId(ticketId);
+        if (ticketHistory == null) {
+            System.out.println("Ticket with id " + ticketId + " not found");
+            return new ResponseEntity<List<TicketHistory>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<TicketHistory>>(ticketHistory, HttpStatus.OK);
     }
 }

@@ -8,6 +8,6 @@ public interface TicketHistoryDao {
 
 	public List<TicketHistory> listTicketHistory();
 	public TicketHistory getTicketHistoryById(int id);
-	
+	public List<TicketHistory> getTicketHistoryByTicketId(int ticketId);
 }
 

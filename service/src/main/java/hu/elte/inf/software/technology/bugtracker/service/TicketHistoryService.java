@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import hu.elte.inf.software.technology.bugtracker.domain.ProjectHistory;
 import hu.elte.inf.software.technology.bugtracker.domain.TicketHistory;
 import hu.elte.inf.software.technology.bugtracker.history.TicketHistoryDao;
 
@@ -30,4 +31,9 @@ public class TicketHistoryService {
 	public void setTicketHistoryDao(TicketHistoryDao ticketHistoryDao) {
 		this.ticketHistoryDao = ticketHistoryDao;
 	}
+	
+    public List<TicketHistory> getTicketHistoryByTicketId(int ticketId) {
+    	List<TicketHistory> history = ticketHistoryDao.getTicketHistoryByTicketId(ticketId); 	
+    	return history;
+    }
 }
