@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Proxy;
 
@@ -37,6 +38,7 @@ public class Ticket implements Serializable{
     private int spentTime;
     private String ticketDescription;
     private Set<Status> status;
+    private String currentStatus;
     private Set<Comment> comment;
 	private Set<TicketHistory> historyRows;
     
@@ -156,4 +158,19 @@ public class Ticket implements Serializable{
 		this.spentTime = spentTime;
 	}
 
+	public String getCurrentStatus() {
+		return currentStatus;
+	}
+
+	public void setCurrentStatus(String currentStatus) {
+		this.currentStatus = currentStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "Ticket [id=" + id + ", ticketName=" + ticketName + ", ticketType=" + ticketType + ", owner=" + owner
+				+ ", reporter=" + reporter + ", project=" + project + ", priority=" + priority + ", spentTime="
+				+ spentTime + ", ticketDescription=" + ticketDescription + ", status=" + status + ", currentStatus="
+				+ currentStatus + "]";
+	}
 }

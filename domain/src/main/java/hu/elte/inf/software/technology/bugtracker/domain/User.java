@@ -171,5 +171,10 @@ public class User implements Serializable{
 	public void setDevelopedProjects(Set<Project> developedProjects) {
 		this.developedProjects = developedProjects;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", admin=" + admin + "]";
+	}
 	
 }

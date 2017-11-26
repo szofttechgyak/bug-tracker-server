@@ -138,5 +138,10 @@ public class Project implements Serializable{
 	public void setS3Time(int s3Time) {
 		this.s3Time = s3Time;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", projectName=" + projectName + ", s1Time=" + s1Time + ", s2Time=" + s2Time
+				+ ", s3Time=" + s3Time + "]";
+	}
 }
