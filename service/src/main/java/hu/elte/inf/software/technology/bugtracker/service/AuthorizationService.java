@@ -94,7 +94,7 @@ public class AuthorizationService {
 		String assigneeRole = getUsersRoleOnProject(projectId, updatedTicket.getOwner().getId());
 		
 		for(Rule rule : rules) {	
-			if (rule.getRole().equals(loggedInUsersRole)) {		
+			if (rule.getTicketType().equals(updatedTicket.getTicketType()) && rule.getRole().equals(loggedInUsersRole)) {		
 				if (rule.getOldStatus().equals(oldStatus) && rule.getNewStatus().equals(newStatus)) {
 					if (rule.getAssigneeRole().equals(assigneeRole)) {
 						return true;
