@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import hu.elte.inf.software.technology.bugtracker.domain.Project;
 import hu.elte.inf.software.technology.bugtracker.domain.Ticket;
 import hu.elte.inf.software.technology.bugtracker.domain.User;
+import hu.elte.inf.software.technology.bugtracker.service.AuthorizationService;
 import hu.elte.inf.software.technology.bugtracker.service.ProjectService;
 import hu.elte.inf.software.technology.bugtracker.service.TicketService;
 import hu.elte.inf.software.technology.bugtracker.service.UserService;
@@ -34,6 +35,9 @@ public class TicketController {
 	
 	@Autowired
     private ProjectService projectService;
+	
+	@Autowired
+	private AuthorizationService authorizationService;
 
     @RequestMapping(value = "/api/tickets", method = RequestMethod.GET)
     public ResponseEntity<List<Ticket>> getAllTickets() {
@@ -83,11 +87,17 @@ public class TicketController {
     	User owner = userService.getUserById(ticket.getOwner().getId());
     	User reporter = userService.getUserById(ticket.getReporter().getId());
     	Project project = projectService.getProjectById(ticket.getProject().getId());
-    	currTicket = ticket;
+
     	currTicket.setOwner(owner);
     	currTicket.setReporter(reporter);
     	currTicket.setProject(project);  
     	currTicket.setId(ticketId);
+    	currTicket.setCurrentStatus(ticket.getCurrentStatus());
+    	
+    	if (!authorizationService.AuthorizeTicketChange(currTicket)) {
+    		return new ResponseEntity<Ticket>(HttpStatus.UNAUTHORIZED);
+    	}
+    		
         ticketService.updateTicket(currTicket);
         return new ResponseEntity<Ticket>(currTicket, HttpStatus.OK);
     }

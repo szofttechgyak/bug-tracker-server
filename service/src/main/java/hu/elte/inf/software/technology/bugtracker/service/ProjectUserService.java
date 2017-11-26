@@ -41,6 +41,21 @@ public class ProjectUserService {
     			.collect(Collectors.toList());
     }
     
+    public List<User> getUsersInRole(int projectId, String role) {
+    	return getAssignedProjectUsers(projectId)
+			.stream()
+			.filter(pu -> pu.getRole().equals(role))
+			.map(pu -> pu.getUser())
+			.collect(Collectors.toList());
+    }
+    
+    public List<ProjectUser> getAssignedProjectUsers(int projectId) {
+    	return getAllProjectUsers()
+    			.stream()
+    			.filter(projectUser -> projectUser.getProject().getId() == projectId)
+    			.collect(Collectors.toList());
+    }
+    
     public void addProjectUser(ProjectUser projectUser){
     	projectUserDao.addProjectUser(projectUser);
     }
