@@ -1,19 +1,25 @@
 package hu.elte.inf.software.technology.bugtracker.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import hu.elte.inf.software.technology.bugtracker.domain.Status;
 import hu.elte.inf.software.technology.bugtracker.domain.Ticket;
+import hu.elte.inf.software.technology.bugtracker.statusdao.StatusDao;
 import hu.elte.inf.software.technology.bugtracker.ticketdao.TicketDao;
 
 @Service
 public class TicketService {
     
+	@Autowired
+	private StatusService statusService;
+	
     @Autowired
     private TicketDao ticketDao;
-
+    
 	public List<Ticket> getAllTickets() {
     	return ticketDao.listTickets();
     } 
@@ -23,11 +29,38 @@ public class TicketService {
     }    
     
     public void addTicket(Ticket ticket){
+    	ticket.setCurrentStatus(Status.NEW);
     	ticketDao.addTicket(ticket);
+    	createNewStatusForTicket(ticket, Status.NEW);
+    }
+        
+    public void updateTicket(Ticket ticket){
+    	updateTicketStatus(ticket);
+    	ticketDao.updateTicket(ticket);
     }
     
-    public void updateTicket(Ticket ticket){
-    	ticketDao.updateTicket(ticket);
+    private void updateTicketStatus(Ticket ticket) {
+    	Status statusInDb = statusService.getCurrentStatusOfTicket(ticket.getId());
+    	if (statusInDb != null) {
+    		String oldStatus = statusInDb.getStatusName();
+    		String newStatus = ticket.getCurrentStatus();
+    		
+    		if (!oldStatus.equals(newStatus)) {
+    			statusInDb.setEndTime(new Date(new java.util.Date().getTime()));
+    			statusService.updateStatus(statusInDb);
+    			createNewStatusForTicket(ticket, newStatus);
+    		}
+    	}
+    }
+    
+    private void createNewStatusForTicket(Ticket ticket, String statusName) {
+    	Status status = new Status();	
+    	status.setStartTime(new Date(new java.util.Date().getTime()));
+    	status.setEndTime(null);
+    	status.setStatusName(statusName);
+    	status.setTicket(ticket);
+    	status.setUser(ticket.getOwner());
+    	statusService.addStatus(status);
     }
     
     public void removeTicket(int ticketId){

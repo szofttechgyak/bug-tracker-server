@@ -2,6 +2,7 @@ package hu.elte.inf.software.technology.bugtracker.statusdao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import hu.elte.inf.software.technology.bugtracker.domain.Status;
+import hu.elte.inf.software.technology.bugtracker.domain.Ticket;
 
 @Repository
 @Transactional
@@ -48,6 +50,15 @@ public class StatusDaoImpl extends HibernateDaoSupport implements StatusDao {
 		Session session = getSessionFactory().getCurrentSession();		
 		Status status = (Status) session.load(Status.class, new Integer(id));
 		return status;
+	}
+	
+	@Override
+	public Status getCurrentStatusOfTicket(int ticketId) {
+		Session session = getSessionFactory().getCurrentSession();
+		Query query = session.createQuery("from Status where ticketId = :id and endTime is null");
+		query.setParameter("id", ticketId);
+		List<Status> status = query.list();
+		return status.isEmpty() ? null : status.get(0);
 	}
 
 	@Override

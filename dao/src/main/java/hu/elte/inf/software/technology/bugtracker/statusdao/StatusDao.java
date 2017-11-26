@@ -10,4 +10,5 @@ public interface StatusDao {
 	public List<Status> listStatuses();
 	public Status getStatusById(int id);
 	public void removeStatus(int id);
+	public Status getCurrentStatusOfTicket(int ticketId);
 }

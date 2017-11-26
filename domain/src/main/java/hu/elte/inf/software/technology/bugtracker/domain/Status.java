@@ -24,6 +24,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Proxy(lazy = false)
 public class Status implements Serializable {
 	
+	public static final String NEW = "New";
+	
 	private int id;
 	private User user;
 	private Ticket ticket;

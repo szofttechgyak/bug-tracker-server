@@ -41,4 +41,8 @@ public class StatusService {
 	public void setStatusDao(StatusDao statusDao) {
 		this.statusDao = statusDao;
 	}
+	
+	public Status getCurrentStatusOfTicket(int ticketId) {
+		return statusDao.getCurrentStatusOfTicket(ticketId);
+	}
 }
