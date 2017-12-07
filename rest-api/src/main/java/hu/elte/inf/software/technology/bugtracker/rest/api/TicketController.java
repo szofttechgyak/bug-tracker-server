@@ -85,11 +85,11 @@ public class TicketController {
             return new ResponseEntity<Ticket>(HttpStatus.NOT_FOUND);
         }
     	User owner = userService.getUserById(ticket.getOwner().getId());
-    	User reporter = userService.getUserById(ticket.getReporter().getId());
+    	//User reporter = userService.getUserById(ticket.getReporter().getId());
     	Project project = projectService.getProjectById(ticket.getProject().getId());
 
     	currTicket.setOwner(owner);
-    	currTicket.setReporter(reporter);
+    	//currTicket.setReporter(reporter);
     	currTicket.setProject(project);  
     	currTicket.setId(ticketId);
     	currTicket.setSpentTime(ticket.getSpentTime());
