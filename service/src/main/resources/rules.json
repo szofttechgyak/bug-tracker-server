@@ -2,71 +2,71 @@
 	{
 		"oldStatus": "New",
 		"newStatus": "In progress 1",
-		"role": "developer",
-		"assigneeRole": "developer",
+		"role": "Developer",
+		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "New",
 		"newStatus": "Waiting for response",
-		"role": "developer",
-		"assigneeRole": "user",
+		"role": "Developer",
+		"assigneeRole": "Customer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Waiting for response",
 		"newStatus": "In progress 1",
-		"role": "user",
-		"assigneeRole": "developer",
+		"role": "Customer",
+		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "In progress 1",
 		"newStatus": "Pending",
-		"role": "user",
-		"assigneeRole": "approver",
+		"role": "Customer",
+		"assigneeRole": "Approver",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Pending",
 		"newStatus": "Declined",
 		"role": "approver",
-		"assigneeRole": "user",
+		"assigneeRole": "Customer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Pending",
 		"newStatus": "In progress 2",
 		"role": "approver",
-		"assigneeRole": "developer",
+		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "In progress 2",
 		"newStatus": "Resolved",
-		"role": "developer",
-		"assigneeRole": "user",
+		"role": "Developer",
+		"assigneeRole": "Customer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Resolved",
 		"newStatus": "Closed",
-		"role": "user",
-		"assigneeRole": "developer",
+		"role": "Customer",
+		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Resolved",
 		"newStatus": "Reopened",
-		"role": "user",
-		"assigneeRole": "developer",
+		"role": "Customer",
+		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Reopened",
 		"newStatus": "In progress 1",
-		"role": "developer",
-		"assigneeRole": "developer",
+		"role": "Developer",
+		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
 	
@@ -76,50 +76,50 @@
 	{
 		"oldStatus": "New",
 		"newStatus": "In progress",
-		"role": "developer",
-		"assigneeRole": "developer",
+		"role": "Developer",
+		"assigneeRole": "Developer",
 		"ticketType": "Bug"
 	},
 	{
 		"oldStatus": "New",
 		"newStatus": "Waiting for response",
-		"role": "developer",
-		"assigneeRole": "user",
+		"role": "Developer",
+		"assigneeRole": "Customer",
 		"ticketType": "Bug"
 	},
 	{
 		"oldStatus": "Waiting for response",
 		"newStatus": "In progress",
-		"role": "user",
-		"assigneeRole": "developer",
+		"role": "Customer",
+		"assigneeRole": "Developer",
 		"ticketType": "Bug"
 	},
 	{
 		"oldStatus": "In progress",
 		"newStatus": "Resolved",
-		"role": "developer",
-		"assigneeRole": "user",
+		"role": "Developer",
+		"assigneeRole": "Customer",
 		"ticketType": "Bug"
 	},
 	{
 		"oldStatus": "Resolved",
 		"newStatus": "Closed",
-		"role": "user",
-		"assigneeRole": "developer",
+		"role": "Customer",
+		"assigneeRole": "Developer",
 		"ticketType": "Bug"
 	},
 	{
 		"oldStatus": "Resolved",
 		"newStatus": "Reopened",
-		"role": "user",
-		"assigneeRole": "developer",
+		"role": "Customer",
+		"assigneeRole": "Developer",
 		"ticketType": "Bug"
 	},
 	{
 		"oldStatus": "Reopened",
 		"newStatus": "In progress",
-		"role": "developer",
-		"assigneeRole": "developer",
+		"role": "Developer",
+		"assigneeRole": "Developer",
 		"ticketType": "Bug"
 	}
 ]
