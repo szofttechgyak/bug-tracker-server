@@ -30,14 +30,14 @@
 	{
 		"oldStatus": "Pending",
 		"newStatus": "Declined",
-		"role": "approver",
+		"role": "Approver",
 		"assigneeRole": "Customer",
 		"ticketType": "Feature request"
 	},
 	{
 		"oldStatus": "Pending",
 		"newStatus": "In progress 2",
-		"role": "approver",
+		"role": "Approver",
 		"assigneeRole": "Developer",
 		"ticketType": "Feature request"
 	},
