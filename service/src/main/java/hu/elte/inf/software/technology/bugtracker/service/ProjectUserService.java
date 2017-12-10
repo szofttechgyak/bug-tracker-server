@@ -86,7 +86,9 @@ public class ProjectUserService {
 			ProjectRole pj = new ProjectRole();
 			pj.setRoleName(role);
 			pj.setUsers(getUsersInRole(projectId, role));
-			projectRole.add(pj);
+			if (!pj.getUsers().isEmpty()) {
+				projectRole.add(pj);
+			}		
 		}
 		
 		return projectRole;
