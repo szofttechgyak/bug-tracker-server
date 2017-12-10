@@ -1,5 +1,6 @@
 package hu.elte.inf.software.technology.bugtracker.rest.api;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,12 +53,22 @@ public class CommentController {
         return new ResponseEntity<Comment>(comment, HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/api/getCommentsForTicket/{ticketId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Comment>> getCommentsForTicket(@PathVariable int ticketId) {
+    	List<Comment> comments = commentService.getCommentsForTicket(ticketId);
+        if (comments == null) {
+            return new ResponseEntity<List<Comment>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Comment>>(comments, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/api/addComment",method = RequestMethod.POST, consumes="application/json")
     public ResponseEntity<Void> addComment(@RequestBody Comment comment, UriComponentsBuilder ucBuilder) {
     	User user = userService.getUserById(comment.getOwner().getId());
     	Ticket ticket = ticketService.getTicketById(comment.getTicket().getId());
     	comment.setOwner(user);
     	comment.setTicket(ticket);
+    	comment.setDate(new Date(new java.util.Date().getTime()));
     	commentService.addComment(comment);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/comment/{commentId}").buildAndExpand(comment.getId()).toUri());

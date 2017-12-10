@@ -1,6 +1,7 @@
 package hu.elte.inf.software.technology.bugtracker.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,12 @@ public class CommentService {
     
     public Comment getCommentById(int id) {
     	return commentDao.getCommentById(id);
+    }
+    
+    public List<Comment> getCommentsForTicket(int ticketId) {
+    	return getAllComments().stream()
+    			.filter(comment -> comment.getTicket().getId() == ticketId)
+    			.collect(Collectors.toList());
     }
     
     public void addComment(Comment comment){
