@@ -92,7 +92,7 @@ public class TicketController {
     	//currTicket.setReporter(reporter);
     	currTicket.setProject(project);  
     	currTicket.setId(ticketId);
-    	currTicket.setSpentTime(ticket.getSpentTime());
+    	currTicket.setSpentTime(currTicket.getSpentTime() + ticket.getSpentTime());
     	currTicket.setCurrentStatus(ticket.getCurrentStatus());
     	
     	if (!authorizationService.AuthorizeTicketChange(currTicket)) {
