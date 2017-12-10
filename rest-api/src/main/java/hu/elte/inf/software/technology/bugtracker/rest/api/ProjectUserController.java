@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import hu.elte.inf.software.technology.bugtracker.domain.Project;
+import hu.elte.inf.software.technology.bugtracker.domain.ProjectRole;
 import hu.elte.inf.software.technology.bugtracker.domain.ProjectUser;
+import hu.elte.inf.software.technology.bugtracker.domain.Rule;
 import hu.elte.inf.software.technology.bugtracker.domain.User;
 import hu.elte.inf.software.technology.bugtracker.service.ProjectService;
 import hu.elte.inf.software.technology.bugtracker.service.ProjectUserService;
@@ -93,4 +96,15 @@ public class ProjectUserController {
         return new ResponseEntity<ProjectUser>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/api/getUserRolesByProject", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ProjectRole>> getUserRolesByProject(@RequestParam("projectId") int projectId) {
+    	List<ProjectRole> userRoles = projectUserService.getUserRolesByProject(projectId);
+        if (userRoles == null || userRoles.isEmpty()) {
+            System.out.println("Users for Project with id " + projectId + " not found");
+            return new ResponseEntity<List<ProjectRole>>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<ProjectRole>>(userRoles, HttpStatus.OK);
+    }
+  
+    
 }
