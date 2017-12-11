@@ -10,7 +10,7 @@ import hu.elte.inf.software.technology.bugtracker.userdao.UserDao;
 
 @Service
 public class UserService {
-
+	//
     @Autowired
     private UserDao userDao;
 
